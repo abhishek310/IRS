@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="icon" type="image/png" href="resources/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+   <!-- <link rel="styleshe/h4>
+                                  <!--   <p class="card-cet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />-->
+    <!-- CSS Files -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/useraccount/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="/static/useraccount/css/demo.css" rel="stylesheet" />
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar" data-image="resources/sidebar-5.jpg">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="#" class="simple-text" style="font-size: 13px;">
+                        {{ request.user.username }}
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/accounts/profile/">
+                            <i class="fas fa-columns" style="margin-right:10px;font-size:25px;"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="/accounts/profile/birdHitAnalysis">
+                           <i class="fas fa-sun" style="margin-right:10px;font-size:25px;"></i>
+                            <p>Bird Hit Analysis</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/accounts/profile/BirdHitForm/">
+                            <i class="fas fa-columns" style="margin-right:10px;font-size:25px;"></i>
+                            <p>Bird Hit Form</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="/accounts/profile/IncidentForm/">
+                            <i class="fas fa-columns" style="margin-right:10px;font-size:25px;"></i>
+                            <p>Incident Form</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <div class=" container-fluid  ">
+                    <a class="navbar-brand" href="#"> Dashboard </a>
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-toggle="dropdown">
+                                    <!--<i class="nc-icon nc-palette"></i>-->
+                                    <span class="d-lg-none">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <i class="fas fa-bell"></i>
+                                    <span class="notification">5</span>
+                                    <span class="d-lg-none">Notification</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Notification 1</a>
+                                    <a class="dropdown-item" href="#">Notification 2</a>
+                                    <a class="dropdown-item" href="#">Notification 3</a>
+                                    <a class="dropdown-item" href="#">Notification 4</a>
+                                    <a class="dropdown-item" href="#">Another notification</a>
+                                </ul>
+                            </li>
+                            <!--<li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nc-icon nc-zoom-split"></i>
+                                    <span class="d-lg-block">&nbsp;Search</span>
+                                </a>
+                            </li>-->
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+
+                            <!--<li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="no-icon">Dropdown</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                </div>
+                            </li>-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="">
+									<i class="fal fa-sign-out"></i>
+                                    <span class="no-icon">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+
+					<div id="google_translate_element"></div>
+
+				<script type="text/javascript">
+                    function googleTranslateElementInit() {
+                          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                        }
+                </script>
+                    <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card ">
+                                <div class="card-header ">
+                                <input style="float:right" type="button" onclick="window.print()" value="print"/>
+				<a href="/accounts/profile/"><input style="float:right" type="button" value="Back"/>
+                        </a>
+								  <h4 class="card-title">WILDLIFE (BIRD/ANIMAL) STRIKE FORM</h4>
+
+                                  <!--   <p class="card-category">24 Hours performance</p>-->
+                                </div>
+                                <div class="card-body ">
+                                   <!-- <div id="chartHours" class="ct-chart"></div>-->
+                                    <form action="./" method="POST" style="padding:6%">
+
+                                        {% csrf_token %}
+
+                                        <table id="results">
+                                            <tr>
+                                                <th style=" text-align: center; font-size: 30px;"></th>
+                                            </tr>
+{##}
+{#                                            <tr>#}
+{#                                                <td>Submitted by : {{  }}</td>#}
+{#                                            </tr>#}
+
+                                            <tr>
+                                                <td>Air Operator : {{ data.air_operator }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aircraft type and series : {{ data.air_type_series }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aircraft Reg : {{ data.air_reg }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Flight Number : {{ data.flight_no }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Engine Model : {{ data.engine_model }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date of Occurrence : {{ data.date_of_occ }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Time of Occurrence : {{ data.time_of_occ }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Time Duration : {{ data.duration_time }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aerodrome of departure : {{ data.aerod_depart }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aerodrome of intended arrival : {{ data.aerod_intend_arr }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aerodrome of occurrence : {{ data.aerod_occ }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Runway in use : {{ data.runway_in_use }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Altitude (AGL) : {{ data.altitude_AGL }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Speed (IAS) : {{ data.speed }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Position (If en-route) : {{ data.position }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ATC informed : {{ data.ATC_inform }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phase of flight : {{ data.phase_of_flight }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Part(s) of aircraft Struck: {{ data.struck_parts }}</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Others (Specify) : {{ data.others }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Part(s) of aircraft damaged : {{ data.damage_parts }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Others (Specify) : {{ data.Others }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Effect on flight : {{ data.effect_on_flight }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Other (specify) : {{ data.effect_others }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Other report raised : {{ data.other_report_raised }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Other (specify) : {{ data.other_reports }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Precipitation : {{ data.precipitation }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sky Condition : {{ data.sky_condition }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Wildlife (Bird/Animal) Description : {{ data.wildlife_desc }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bird Remains sent for identification : {{ data.bird_remains }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Number of birds/animals seen : {{ data.bird_seen }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Number of birds/animals struck : {{ data.bird_struck }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pilot warned of birds/animals : {{ data.pilot_warned }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bird/Animal Size : {{ data.bird_size }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Remarks and other relevant information : {{ data.remarks }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><h3>Financial Loss Information</h3></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aircraft time out of service (HRS) : {{ data.aircraft_tos }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Estimated cost of repairs or replacement : {{ data.est_cost_of_repair }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Estimated other cost : {{ data.est_other }}</td>
+                                            </tr>
+                                                                                        					    <tr>
+                                                <td>Submitted By: {{ data.submitted_by }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input class="btn waves-effect waves-light" type="submit" value="Submit" /></td>
+                                            </tr>
+                                        </table>
+
+                                        <div id="pageNavPosition" style="text-align: center;"></div>
+
+
+                                        <!--<div>-->
+                                          <!--<div id="modal1" class="modal">-->
+                                            <!--<div class="modal-content">-->
+                                              <!--<h4>Send Copy To :</h4>-->
+                                                <!--<table>-->
+                                                    <!--<tr>-->
+                                                        <!--<td>-->
+                                                            <!--{{ form.operation_department }}-->
+                                                        <!--</td>-->
+                                                    <!--</tr>-->
+                                                    <!--<tr>-->
+                                                        <!--<td>-->
+                                                             <!--{{ form.ATC_mark }}-->
+                                                        <!--</td>-->
+                                                    <!--</tr>-->
+                                                    <!--<tr>-->
+                                                        <!--<td>-->
+                                                            <!--{{ form.DGCA_mark }}-->
+                                                        <!--</td>-->
+                                                    <!--</tr>-->
+                                                <!--</table>-->
+                                                <!--&lt;!&ndash;{{ form.operation_department }}<br>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;&lt;!&ndash;{{ form.ATC_mark }}<br>&ndash;&gt;&ndash;&gt;-->
+                                            <!--</div>-->
+                                            <!--<div class="modal-footer">-->
+                                              <!--&lt;!&ndash;&lt;!&ndash;<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>&ndash;&gt;&ndash;&gt;-->
+                                                <!--<input class="btn waves-effect waves-light" type="submit" value="Submit" />-->
+                                            <!--</div>-->
+                                          <!--</div>-->
+                                        <!--</div>-->
+
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!--   Core JS Files   -->
+<script src="/static/useraccount/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="/static/useraccount/js/popper.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="/static/useraccount/js/bootstrap-switch.js"></script>
+<!--  Google Maps Plugin    -->
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
+<!--  Chartist Plugin  -->
+<!--<script src="resources/chartist.min.js"></script> -->
+<!--  Notifications Plugin    -->
+<script src="/static/useraccount/js/bootstrap-notify.js"></script>
+<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+<script src="/static/useraccount/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+<script src="/static/useraccount/js/demo.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+        demo.showNotification();
+
+    });
+</script>
+
+</html>

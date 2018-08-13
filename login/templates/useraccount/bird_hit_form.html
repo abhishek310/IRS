@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="icon" type="image/png" href="resources/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />-->
+    <!-- CSS Files -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/useraccount/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="/static/useraccount/css/demo.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="/static/login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/login/css/main1.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+
+    <style>
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+</style>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar" data-image="resources/sidebar-5.jpg">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="#" class="simple-text" style="font-size: 13px;">
+                        {{ request.user.username }}
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/accounts/profile/">
+                            <i class="fas fa-columns" style="margin-right:10px;font-size:25px;"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="/accounts/profile/birdHitAnalysis/">
+                           <i class="fas fa-sun" style="margin-right:10px;font-size:25px;"></i>
+                            <p>Bird Hit Analysis</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="/accounts/profile/BirdHitForm/">
+                            <i class="fas fa-columns" style="margin-right:10px;font-size:25px;"></i>
+                            <p>Bird Hit Form</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="/accounts/profile/IncidentForm/">
+                            <i class="fas fa-columns" style="margin-right:10px;font-size:25px;"></i>
+                            <p>Incident Form</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <div class=" container-fluid  ">
+                    <a class="navbar-brand" href="#"> Dashboard </a>
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-toggle="dropdown">
+                                    <!--<i class="nc-icon nc-palette"></i>-->
+                                    <span class="d-lg-none">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <i class="fas fa-bell"></i>
+                                    <span class="notification">5</span>
+                                    <span class="d-lg-none">Notification</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Notification 1</a>
+                                    <a class="dropdown-item" href="#">Notification 2</a>
+                                    <a class="dropdown-item" href="#">Notification 3</a>
+                                    <a class="dropdown-item" href="#">Notification 4</a>
+                                    <a class="dropdown-item" href="#">Another notification</a>
+                                </ul>
+                            </li>
+                            <!--<li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nc-icon nc-zoom-split"></i>
+                                    <span class="d-lg-block">&nbsp;Search</span>
+                                </a>
+                            </li>-->
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+
+                            <!--<li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="no-icon">Dropdown</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                </div>
+                            </li>-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+									<i class="fal fa-sign-out"></i>
+                                    <span class="no-icon">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+
+					<div id="google_translate_element"></div>
+
+				<script type="text/javascript">
+                    function googleTranslateElementInit() {
+                          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                        }
+                </script>
+                    <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card " style="background-color: #F2F2F2">
+                                <div class="card-header ">
+
+								  <h3 class="card-title">WILDLIFE (BIRD/ANIMAL) STRIKE FORM</h3>
+                                  <!--   <p class="card-category">24 Hours performance</p>-->
+                                </div>
+                                <div class="card-body ">
+
+
+
+                                    {% load widget_tweaks %} <!-- widget_tweaks adds class to django input tag -->
+                                   <!-- <div id="chartHours" class="ct-chart"></div>-->
+                                    <form id="bird_hit_form" action="./" method="POST" style="padding:6%">
+
+                                        {% csrf_token %}
+
+                                            <div class="tab">
+
+                                                 <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                        Air Operator :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                    {{ form.air_operator | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                       Aircraft type and series :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                   {{ form.air_type_series | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                       Aircraft Reg :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                   {{ form.air_reg | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                      Flight Number :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                   {{ form.flight_no | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                      Engine Model :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                 {{ form.engine_model | add_class:"input100"  }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                      Date of Occurrence (YYYY-MM-DD):
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                 {{ form.date_of_occ | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                     Time of Occurrence  (HH:MM:SS):
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                 {{ form.time_of_occ | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                    Time Duration :
+                                                        <br/><br/>
+                                                        {{ form.duration_time  | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                             </div>
+
+                                            <div class="tab">
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                    Aerodrome of departure :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                 {{ form.aerod_depart | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                   Aerodrome of intended arrival :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                {{ form.aerod_intend_arr | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Aerodrome of occurrence :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                {{ form.aerod_occ | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Runway in use :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                {{ form.runway_in_use | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                 Altitude (AGL) :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                {{ form.altitude_AGL | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                Speed (IAS) :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                {{ form.speed | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                Position (If en-route) :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                {{ form.position | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                 <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                    ATC informed :
+                                                        <br/><br/>
+                                                        {{ form.ATC_inform | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                   Phase of flight :
+                                                        <br/><br/>
+                                                        {{ form.phase_of_flight | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                   Part(s) of aircraft Struck:
+                                                        <br/><br/>
+                                                        {{ form.struck_parts | attr:"style:list-style-type: none;"  }}
+                                                    </span><br/>
+                                                    <span class="txt1">
+                                                  Others (Specify) :
+                                                    </span>
+                                                 </div>
+
+                                                <div class="wrap-input100">
+                                               {{ form.others | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+                                                <br/><br/>
+
+                                            </div>
+
+                                            <div class="tab">
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Part(s) of aircraft damaged :
+                                                        <br/><br/>
+                                                        {{ form.damage_parts | attr:"style:list-style-type: none;"  }}
+                                                    </span><br/>
+                                                    <span class="txt1">
+                                                  Others (Specify) :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                               {{ form.Others | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                 <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Effect on flight :
+                                                        <br/><br/>
+                                                        {{ form.effect_on_flight | attr:"style:list-style-type: none;"  }}
+                                                    </span><br/>
+                                                    <span class="txt1">
+                                                  Others (Specify) :
+                                                    </span>
+                                                 </div>
+
+                                                <div class="wrap-input100">
+                                               {{ form.other_effects | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Other report raised :
+                                                        <br/><br/>
+                                                        {{ form.other_report_raised | attr:"style:list-style-type: none;"  }}
+                                                    </span><br/>
+                                                    <span class="txt1">
+                                                  Others (Specify) :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                               {{ form.other_reports | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+
+                                               <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                   Precipitation :
+                                                        <br/><br/>
+                                                        {{ form.precipitation  | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                               <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Sky Condition :
+                                                        <br/><br/>
+                                                        {{ form.sky_condition  | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                        Wildlife (Bird/Animal) Description :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                    {{ form.wildlife_description | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Bird Remains sent for identification :
+                                                        <br/><br/>
+                                                        {{ form.bird_remains_sent_for_identification | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Number of birds/animals seen :
+                                                        <br/><br/>
+                                                        {{ form.number_of_birds_seen | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                            </div>
+
+                                        <div class="tab">
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Number of birds/animals struck :
+                                                        <br/><br/>
+                                                        {{ form.number_of_birds_struck | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Pilot warned of birds/animals :
+                                                        <br/><br/>
+                                                        {{  form.pilot_warned_of_birds | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                  Bird/Animal Size :
+                                                        <br/><br/>
+                                                        {{  form.bird_size | attr:"style:list-style-type: none;"  }}
+                                                    </span>
+                                                 </div>
+
+                                               <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                       Remarks and other relevant information :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                    {{  form.remarks | add_class:"input100" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+                                            <br/><br/>
+                                            </div>
+
+                                            <div class="tab">
+                                            <h3>Financial Loss Information :</h3>
+                                               <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                       Aircraft time out of service (HRS) :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                    {{  form.aircraft_time_out_of_service | add_class:"input100" | attr:"required" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                               <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                      Estimated cost of repairs or replacement :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                    {{  form.estimated_cost_of_repair | add_class:"input100" | attr:"required"}}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <div class="p-t-31 p-b-9">
+                                                    <span class="txt1">
+                                                     Estimated other cost :
+                                                    </span>
+                                                 </div>
+                                                <div class="wrap-input100">
+                                                    {{  form.estimated_other_cost | add_class:"input100" | attr:"required" }}
+                                                    <span class="focus-input100"></span>
+                                                </div>
+
+                                                <br/><br/>
+                                                <input id="preview_button" class="btn waves-effect waves-light" type="button" value="Preview and Submit" onclick="preview()" />
+                                                <input id="edit_button" class="btn waves-effect waves-light" type="button" value="Edit Form" onclick="edit_form()">
+                                                <input id="submit_button" class="btn waves-effect waves-light" type="submit" value="Submit" />
+
+                                                </div>
+
+
+
+
+                                        <div id="pageNavPosition" style="text-align: center;"></div>
+
+
+                                            </form>
+                                     <div style="overflow:auto;">
+                                            <div style="float:right;">
+                                            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                            </div>
+                                            </div>
+                                            <!-- Circles which indicates the steps of the form: -->
+                                            <div style="text-align:center;margin-top:40px;">
+                                                <span class="step"></span>
+                                                <span class="step"></span>
+                                                <span class="step"></span>
+                                                <span class="step"></span>
+                                                <span class="step"></span>
+
+                                            </div>
+                                             </div>
+
+
+
+
+
+
+                                        <!--<div>-->
+                                          <!--<div id="modal1" class="modal">-->
+                                            <!--<div class="modal-content">-->
+                                              <!--<h4>Send Copy To :</h4>-->
+                                                <!--<table>-->
+                                                    <!--<tr>-->
+                                                        <!--<td>-->
+                                                            <!--{{ form.operation_department }}-->
+                                                        <!--</td>-->
+                                                    <!--</tr>-->
+                                                    <!--<tr>-->
+                                                        <!--<td>-->
+                                                             <!--{{ form.ATC_mark }}-->
+                                                        <!--</td>-->
+                                                    <!--</tr>-->
+                                                    <!--<tr>-->
+                                                        <!--<td>-->
+                                                            <!--{{ form.DGCA_mark }}-->
+                                                        <!--</td>-->
+                                                    <!--</tr>-->
+                                                <!--</table>-->
+                                                <!--&lt;!&ndash;{{ form.operation_department }}<br>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;&lt;!&ndash;{{ form.ATC_mark }}<br>&ndash;&gt;&ndash;&gt;-->
+                                            <!--</div>-->
+                                            <!--<div class="modal-footer">-->
+                                              <!--&lt;!&ndash;&lt;!&ndash;<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>&ndash;&gt;&ndash;&gt;-->
+                                                <!--<input class="btn waves-effect waves-light" type="submit" value="Submit" />-->
+                                            <!--</div>-->
+                                          <!--</div>-->
+                                        <!--</div>-->
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the crurrent tab
+
+function preview() {
+    $("#bird_hit_form :input").prop("readonly", true);
+    $(':radio,:checkbox').click(function(){
+    return false;
+});
+ $("#preview_button").hide();
+
+ document.getElementById("edit_button").disabled=false;
+ document.getElementById("submit_button").disabled=false;
+ $("#edit_button").show();
+ $("#submit_button").show();
+
+
+}
+
+function edit_form() {
+    $("#bird_hit_form :input").prop("readonly", false);
+     $(':radio,:checkbox').click(function(){
+    return true;
+});
+     $("#edit_button").hide();
+     $("#submit_button").hide();
+     $("#preview_button").show();
+
+}
+
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+    //document.getElementById("nextBtn").style.display = "none";
+    $(document).ready(function(){
+
+        $("#nextBtn").hide();
+
+
+});
+  }
+  else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  //  document.getElementById("nextBtn").removeAttribute("display");
+           $(document).ready(function(){
+
+        $("#nextBtn").show();
+
+
+});
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+
+</body>
+<!--   Core JS Files   -->
+<script src="/static/useraccount/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="/static/useraccount/js/popper.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="/static/useraccount/js/bootstrap-switch.js"></script>
+<!--  Google Maps Plugin    -->
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
+<!--  Chartist Plugin  -->
+<!--<script src="resources/chartist.min.js"></script> -->
+<!--  Notifications Plugin    -->
+<script src="/static/useraccount/js/bootstrap-notify.js"></script>
+<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+<script src="/static/useraccount/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+<script src="/static/useraccount/js/demo.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+        demo.showNotification();
+
+    });
+</script>
+
+</html>
